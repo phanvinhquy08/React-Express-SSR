@@ -1,5 +1,6 @@
 // @ts-ignore
 const express = require('express');
+const webpack = require('webpack');
 const React = require('react');
 // @ts-ignore
 const ReactDOMServer = require('react-dom/server');
@@ -13,18 +14,18 @@ require('@babel/register').default({
 
 const ClientApp = require('../src/App.tsx').default;
 const HTML = require('../src/Html.tsx').default;
-// const config = require('../webpack.config.js');
-// const middleware = require('webpack-dev-middleware');
+const config = require('../webpack.config.js');
+const middleware = require('webpack-dev-middleware');
 const port = process.env.PORT;
-// const compiler = webpack(config);
+const compiler = webpack(config);
 
 app.set('port', port);
 
-// app.use(
-//   middleware(compiler, {
-//     publicPath: config.output.publicPath,
-//   }),
-// );
+app.use(
+  middleware(compiler, {
+    publicPath: config.output.publicPath,
+  }),
+);
 
 app.get('/', (req, res) => {
   const content = ReactDOMServer.renderToString(React.createElement(ClientApp));

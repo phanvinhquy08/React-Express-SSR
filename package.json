@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rm -rf build && webpack --mode production",
-    "start": "nodemon server/index.ts"
+    "start": "yarn build && nodemon server/index.ts",
+    "stop": "npx kill-port 5000"
   },
   "author": "",
   "license": "ISC",

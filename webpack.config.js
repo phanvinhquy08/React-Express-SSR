@@ -132,4 +132,4 @@ const serverConfig = {
   // plugins: [new NodePolyfillPlugin()],
 };
 
-module.exports = [clientConfig, serverConfig];
+module.exports = clientConfig;
